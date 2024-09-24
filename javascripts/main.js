@@ -1,8 +1,17 @@
 // Prer-Loader
-window.addEventListener("load", function() {
-    const preloader = document.getElementById("preloader");
-    preloader.style.display = "none";
+// Automatically show the preloader when the page loads
+const preloader = document.getElementById("preloader");
+preloader.style.display = "flex"; // Show the preloader
+
+// Hide the preloader once the page has fully loaded
+window.addEventListener("load", () => {
+    preloader.classList.add("preloader_hidden");
+
+    preloader.addEventListener("transitionend", () => {
+        document.body.removeChild(preloader); // Correct way to remove the loader
+    });
 });
+
 
 
 // sticky Navigation
