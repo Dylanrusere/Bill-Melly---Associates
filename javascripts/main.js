@@ -1,3 +1,10 @@
+// Prer-Loader
+window.addEventListener("load", function() {
+    const preloader = document.getElementById("preloader");
+    preloader.style.display = "none";
+});
+
+
 // sticky Navigation
 window.addEventListener("scroll", function () {
     const header = document.querySelector("header");
@@ -62,12 +69,12 @@ setInterval(autoSlider, 7000); // Change slide every 5 seconds
 const counters = document.querySelectorAll('.counter');
 
 // Function to animate the counter
-const animateCounter = (counter, target, duration) => {
-    let count = parseInt(counter.querySelector('.number_counter').textContent, 10); // Starting number
-    const increment = Math.ceil(target / (duration / 50)); // Calculate increment based on duration
+const animateCounter = (counter, target) => {
+    let count = 0; // Starting number
+    const increment = Math.ceil(target / 100); // Increment value
     const interval = setInterval(() => {
         count += increment;
-        if (count >= target) {
+        if (count > target) {
             count = target; // Ensure we don't exceed the target
             clearInterval(interval); // Stop counting
         }
@@ -80,27 +87,7 @@ const startCounting = (entries, observer) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             const target = parseInt(entry.target.dataset.target, 10); // Get target from data attribute
-            let duration; // Variable to hold duration based on the target
-
-            // Set duration based on target value
-            switch (target) {
-                case 15: // Years of Experience
-                    duration = 2000; // 2 seconds
-                    break;
-                case 5000: // Happy Clients
-                    duration = 4000; // 4 seconds
-                    break;
-                case 50: // Countries Covered
-                    duration = 3000; // 3 seconds
-                    break;
-                case 500: // Number of Employees (start from 400)
-                    animateCounter(entry.target, target, duration);
-                    return; // Skip calling animateCounter again below
-                default:
-                    duration = 2000; // Default duration if no match
-            }
-
-            animateCounter(entry.target, target, duration); // Start animation
+            animateCounter(entry.target, target); // Start animation
             observer.unobserve(entry.target); // Stop observing this element
         }
     });
@@ -115,7 +102,3 @@ const observer = new IntersectionObserver(startCounting, {
 counters.forEach(counter => {
     observer.observe(counter);
 });
-
-// Adjust the target value for Number of Employees to start from 400
-document.querySelector('.employees_employed_container').dataset.target = 500; // Set target to 500
-document.querySelector('.employees_employed_container .number_counter').textContent = 400; // Start from 400
