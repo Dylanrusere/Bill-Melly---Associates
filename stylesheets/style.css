@@ -652,6 +652,11 @@ header.sticky .menu{
     }
 }
 
+.about_learn_more:hover{
+    background: #ffffff;
+    color: #040031;
+}
+
 
 .about_image_container{
     width: 100%;
@@ -738,6 +743,133 @@ header.sticky .menu{
     font-weight: 100;
 }
 
+/* Company Brand */
+#company_brand{
+    background-image: url(../assets/images/hero-1.jpg);
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+
+    @media(max-width:450px){
+        margin: 5% 0;
+    }
+}
+
+.company_brand_overlay_container{
+    padding: 5% 0;
+    background-color: rgba(0, 0, 0, 0.589);
+}
+
+.company_brand_grid_container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3%;
+
+    @media(max-width:630px){
+        grid-template-columns: 1fr;
+    }
+}
+
+.company_brand_head{
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.company_brand_big_typo{
+    font-weight: 600;
+    font-size: 40px;
+    color: #ffffff;
+}
+
+.company_brand_par{
+    color: #ffffff;
+}
+
+.learn_more_btn_container{
+    margin-top: 5%;
+}
+
+.learn_more_btn{
+    border: none;
+    background: red;
+    padding: 1.5% 4%;
+    color: #ffffff;
+    border-radius: 2px;
+    transition: 0.5s ease-in-out;
+
+    @media(max-width:630px){
+        padding: 3% 5%;
+    }
+
+    @media(max-width:520px){
+        padding: 2% 4%;
+    }
+}
+
+.company_brand_right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @media(max-width:630px){
+        margin-top: 10%;
+    }
+}
+
+.company_brand_right_right{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.company_brand_right_right i{
+    font-size: 25px;
+    color: #ffffff;
+    position: relative; /* Ensures the icon is on top of the animated background */
+    z-index: 2; /* Keeps the icon above the pulse animation */
+}
+
+/* Add pulse effect to the background using ::before */
+.company_brand_right_right::before {
+    content: '';
+    position: absolute;
+    top: 12%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    background-color: red;
+    border-radius: 50%;
+    z-index: 1;
+    animation: pulse-bg 2s infinite;
+}
+
+/* Pulse animation for the background */
+@keyframes pulse-bg {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.7;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.3);
+        opacity: 0.3;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.7;
+    }
+}
+
+.company_brand_text{
+    text-align: center;
+    color: #ffffff;
+    margin-top: 3%;
+}
+
+.vision_container{
+    margin: 5% 0;
+}
 
 /* Overall Container */
 .overall_heads{
