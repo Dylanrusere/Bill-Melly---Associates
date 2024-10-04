@@ -1064,6 +1064,20 @@ header.sticky .menu{
     }
 }
 
+/* Our Projects */
+#our_projects{
+    padding: 5% 0;
+}
+
+.projects_head_small{
+    font-weight: 600;
+}
+
+.projects_head{
+    font-weight: 800;
+    font-size: 40px;
+}
+
 /* Overall Container */
 .overall_heads{
 
